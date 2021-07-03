@@ -101,6 +101,15 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
+# Docker Volums
+# Postgres
+**/data
+**/pgadmin
+
+# Redis
+**/acl
+**/conf
+
 # Environments
 .env
 .venv
