@@ -1,2 +1,11 @@
+# API
 fastapi==0.65.2
 uvicorn==0.14.0
+
+# ORM
+sqlalchemy==1.4.20
+psycopg2-binary==2.9.1
+
+
+# Setting
+python-dotenv==0.18.0
