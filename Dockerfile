@@ -13,4 +13,4 @@ RUN    pip install -r requirements.txt
 # Install Project
 ADD    ./app            /service/app
 
-CMD ["uvicorn", "app.main:app", "--port 8000", "--env-file prod.env"]
+CMD ["uvicorn", "app.main:app", "--port=8000", "--env-file=prod.env"]
