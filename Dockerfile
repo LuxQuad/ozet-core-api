@@ -1,16 +1,16 @@
-FROM python:3
+FROM python:3.7
 
-WORKDIR /app
+WORKDIR /service
 
 # Setup Env
-ADD    ./prod.env       /app/prod.env
-ADD    ./prod.env       /app/.env
+ADD    ./prod.env       /service/prod.env
+ADD    ./prod.env       /service/.env
 
 # Install Package
-ADD    ./requirements.txt   /app/
+ADD    ./requirements.txt   /service/
 RUN    pip install -r requirements.txt
 
 # Install Project
-ADD    ./gunicorn       /app/gunicorn/
+ADD    ./app            /service/app
 
-CMD ["gunicorn", "main:app", "-c", "gunicorn/prod.py"]
+CMD ["uvicorn", "app.main:app", "--port 8000", "--env-file prod.env"]
