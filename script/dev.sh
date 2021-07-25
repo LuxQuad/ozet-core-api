@@ -1,4 +1,4 @@
 uvicorn app.main:app \
     --port=8000 \
-    --reload-dir=app \
+    --reload \
     --env-file=.env \
