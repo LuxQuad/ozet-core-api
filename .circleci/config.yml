@@ -309,7 +309,7 @@ executors:
           ]
         }
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.9.6
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
