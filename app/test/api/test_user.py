@@ -10,9 +10,3 @@ def test_read_user():
     response = client.get("/users", headers={"X-Token": settings.X_TOKEN})
 
     assert response.status_code == 200
-
-
-def test_read_user():
-    response = client.get("/users", headers={"X-Token": settings.X_TOKEN})
-
-    assert response.status_code == 200

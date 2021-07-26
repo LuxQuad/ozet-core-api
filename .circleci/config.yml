@@ -7,7 +7,7 @@ executors:
   luxquad-executor:
     environment:
       IMAGE_NAME: luxquad/esume-api
-      platform: Esume API Service - Fast API
+      platform: Esume Core API Service - Fast API
       slack_build_start: |
         {
           "blocks": [
@@ -439,6 +439,7 @@ workflows:
                 - master
                 - dev
                 - /^(feat)[/].+/
+                - /^(circleci)[/].+/
 
       - test:
           requires:
