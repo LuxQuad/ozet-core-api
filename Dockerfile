@@ -15,4 +15,4 @@ ADD    ./app            /service/app
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--env-file", "prod.env"]
+CMD ["uvicorn", "app.main:service", "--host", "0.0.0.0", "--port", "8000", "--env-file", "prod.env"]
