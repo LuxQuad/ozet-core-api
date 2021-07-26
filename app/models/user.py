@@ -1,5 +1,10 @@
-import sys, os
+"""
+@Author:
+    Bart Kim 
 
+@Note:
+
+"""
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 

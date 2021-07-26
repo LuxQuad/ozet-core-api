@@ -1,19 +1,78 @@
-from dotenv import load_dotenv
+"""
+@Author:
+    Bart Kim 
+
+@Note:
+
+"""
+import graphene
+from starlette.graphql import GraphQLApp
 
 from fastapi import Depends, FastAPI, HTTPException
 
+from app.settings import settings
 from app.database import esume_session_local, esume_engine, esume_base
-from app.routers import items, users
 
-load_dotenv(verbose=True)
+from app import middleware
+from app import routers
 
+
+'''
+    DB Migrate
+'''
 esume_base.metadata.create_all(bind=esume_engine)
 
-app = FastAPI()
+'''
+    GraphQL
+'''
 
-app.include_router(users.router)
-app.include_router(items.router)
 
-@app.get("/")
-async def root():
-    return {"message": "Hello Esume!"}
+class Query(graphene.ObjectType):
+    hello = graphene.String(name=graphene.String(default_value="stranger"))
+
+    def resolve_hello(self, info, name):
+        return "Hello " + name
+
+
+'''
+    Fast API Module Initial
+'''
+tags_metadata = [
+    {
+        "name": "사용자",
+        "description": "Operations with users. The **login** logic is also here.",
+    },
+    {
+        "name": "아이템",
+        "description": "Manage items. So _fancy_ they have their own docs.",
+        "externalDocs": {
+            "description": "Items external docs",
+            "url": "https://fastapi.tiangolo.com/",
+        },
+    },
+]
+
+
+service = FastAPI(
+    title=settings.SERVICE_NAME,
+    description=settings.SERVICE_NAME,
+    verison=settings.SERVICE_NAME,
+    openapi_tags=tags_metadata
+)
+service.add_route("/", GraphQLApp(schema=graphene.Schema(query=Query)))
+
+
+'''
+    Fast API Middleware
+'''
+service.add_middleware(
+    middleware.cors.CORSMiddleware,
+    **middleware.cors.config
+)
+
+'''
+    Fast API Router
+'''
+service.include_router(routers.users.router)
+service.include_router(routers.items.router)
+service.include_router(routers.health.router)

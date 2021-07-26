@@ -1,13 +1,18 @@
-import os
+"""
+@Author:
+    Bart Kim 
 
+@Note:
+
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-ESUME_DATABASE_URL = os.getenv('ESUME_DATABASE_URL')
+from app.settings import settings
 
 engine = create_engine(
-    ESUME_DATABASE_URL, 
+    settings.ESUME_DATABASE_URL,
     connect_args={}
 )
 

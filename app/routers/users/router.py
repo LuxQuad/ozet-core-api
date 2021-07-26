@@ -9,7 +9,7 @@ from app.dependencies import get_token_header, get_db
 
 router = APIRouter(
     prefix="/users",
-    tags=["users"],
+    tags=["사용자"],
     dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not found"}},
 )
