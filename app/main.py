@@ -5,9 +5,6 @@
 @Note:
 
 """
-import graphene
-from starlette.graphql import GraphQLApp
-
 from fastapi import Depends, FastAPI, HTTPException
 
 from app.settings import settings
@@ -21,17 +18,6 @@ from app import routers
     DB Migrate
 '''
 esume_base.metadata.create_all(bind=esume_engine)
-
-'''
-    GraphQL
-'''
-
-
-class Query(graphene.ObjectType):
-    hello = graphene.String(name=graphene.String(default_value="stranger"))
-
-    def resolve_hello(self, info, name):
-        return "Hello " + name
 
 
 '''
@@ -59,7 +45,6 @@ service = FastAPI(
     verison=settings.SERVICE_NAME,
     openapi_tags=tags_metadata
 )
-service.add_route("/", GraphQLApp(schema=graphene.Schema(query=Query)))
 
 
 '''
@@ -76,3 +61,11 @@ service.add_middleware(
 service.include_router(routers.users.router)
 service.include_router(routers.items.router)
 service.include_router(routers.health.router)
+
+
+'''
+    Fast API GraphQL Router
+'''
+
+routers.health.add_graphql_route(service)
+routers.users.add_graphql_route(service)

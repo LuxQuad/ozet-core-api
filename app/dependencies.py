@@ -23,6 +23,7 @@ async def get_query_token(token: str):
 
 async def get_db():
     db = esume_session_local()
+
     try:
         yield db
     finally:
