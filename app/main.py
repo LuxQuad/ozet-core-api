@@ -67,5 +67,4 @@ service.include_router(routers.health.router)
     Fast API GraphQL Router
 '''
 
-routers.health.add_graphql_route(service)
 routers.users.add_graphql_route(service)
