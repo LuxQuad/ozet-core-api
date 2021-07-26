@@ -350,13 +350,7 @@ jobs:
           command: |
             env > .env
             cp .env prod.env
-
-      - run:
-          name: Run build
-          command: |
-            source ~/workspace/venv/bin/activate
-            sh script/run.sh
-            
+           
       - slack/notify:
           event: fail
           mentions: '@EngineeringTeam'
