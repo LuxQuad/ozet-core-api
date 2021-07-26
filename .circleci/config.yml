@@ -365,14 +365,9 @@ jobs:
           root: ./
           paths:
             - ./*
-          
-      - store_artifacts:
-          name: Save test reports
-          path: ~/workspace/.pytest_cache
-          destination: test-reports
 
       - store_artifacts:
-          name: Save artifacts - tests
+          name: Save artifacts - test
           path: ~/workspace/app/test
           destination: tests
 
@@ -382,11 +377,15 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/workspace
+          
       - run:
           name: Run tests
           command: |
             source ~/workspace/venv/bin/activate
-            pytest
+            pytest --junitxml="~/workspace/test-results/pytest/results.xml"
+
+      - store_test_results:
+          path: ~/workspace/test-results
 
       - slack/notify:
           event: fail
