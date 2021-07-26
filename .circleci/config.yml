@@ -382,10 +382,10 @@ jobs:
           name: Run tests
           command: |
             source ~/workspace/venv/bin/activate
-            pytest --junitxml="test-results/pytest/results.xml"
+            pytest --junitxml="~/workspace/test-results/pytest/results.xml"
 
       - store_test_results:
-          path: test-results
+          path: ~/workspace/test-results
 
       - slack/notify:
           event: fail
