@@ -8,7 +8,6 @@
 from typing import List, Optional
 
 from pydantic import BaseModel
-from graphene_pydantic import PydanticInputObjectType, PydanticObjectType
 
 
 class ItemBase(BaseModel):
