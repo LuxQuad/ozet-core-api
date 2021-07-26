@@ -1,0 +1,462 @@
+version: 2.1
+orbs:
+  python: circleci/python@1.0.0
+  slack: circleci/slack@4.1
+
+executors:
+  luxquad-executor:
+    environment:
+      IMAGE_NAME: luxquad/esume-api
+      platform: Esume API Service - Fast API
+      slack_build_start: |
+        {
+          "blocks": [
+            {
+              "type": "header",
+              "text": {
+                "type": "plain_text",
+                "text": "$platform > :crossed_swords: . . . 빌드가 시작되었습니다. ",
+                "emoji": true
+              }
+            },
+            {
+              "type": "context",
+              "elements": [
+                {
+                  "type": "mrkdwn",
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                }
+              ]
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "fields": [
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                }
+              ],
+              "accessory": {
+                "type": "image",
+                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                "alt_text": "CircleCI logo"
+              }
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+              },
+              "accessory": {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "링크",
+                  "emoji": true
+                },
+                "value": "click_me_123",
+                "url": "${CIRCLE_BUILD_URL}",
+                "action_id": "button-action"
+              }
+            },
+            {
+              "type": "divider"
+            }
+          ]
+        }
+      slack_build_fail: |
+        {
+          "blocks": [
+            {
+              "type": "header",
+              "text": {
+                "type": "plain_text",
+                "text": "$platform > :face_with_head_bandage: . . . 빌드가 실패했습니다.",
+                "emoji": true
+              }
+            },
+            {
+              "type": "context",
+              "elements": [
+                {
+                  "type": "mrkdwn",
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                }
+              ]
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "fields": [
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                }
+              ],
+              "accessory": {
+                "type": "image",
+                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                "alt_text": "CircleCI logo"
+              }
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+              },
+              "accessory": {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "링크",
+                  "emoji": true
+                },
+                "value": "click_me_123",
+                "url": "${CIRCLE_BUILD_URL}",
+                "action_id": "button-action"
+              }
+            },
+            {
+              "type": "divider"
+            }
+          ]
+        }
+      slack_build_success: |
+        {
+          "blocks": [
+            {
+              "type": "header",
+              "text": {
+                "type": "plain_text",
+                "text": "$platform > :star2: . . . 빌드가 성공했습니다.",
+                "emoji": true
+              }
+            },
+            {
+              "type": "context",
+              "elements": [
+                {
+                  "type": "mrkdwn",
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                }
+              ]
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "fields": [
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                }
+              ],
+              "accessory": {
+                "type": "image",
+                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                "alt_text": "CircleCI logo"
+              }
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+              },
+              "accessory": {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "링크",
+                  "emoji": true
+                },
+                "value": "click_me_123",
+                "url": "${CIRCLE_BUILD_URL}",
+                "action_id": "button-action"
+              }
+            },
+            {
+              "type": "divider"
+            }
+          ]
+        }
+      slack_build_success_test: |
+        {
+          "blocks": [
+            {
+              "type": "header",
+              "text": {
+                "type": "plain_text",
+                "text": "$platform > :placard: . . . 모든 테스트를 통과 했습니다.",
+                "emoji": true
+              }
+            },
+            {
+              "type": "context",
+              "elements": [
+                {
+                  "type": "mrkdwn",
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                }
+              ]
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "fields": [
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                }
+              ],
+              "accessory": {
+                "type": "image",
+                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                "alt_text": "CircleCI logo"
+              }
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+              },
+              "accessory": {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "링크",
+                  "emoji": true
+                },
+                "value": "click_me_123",
+                "url": "${CIRCLE_BUILD_URL}",
+                "action_id": "button-action"
+              }
+            },
+            {
+              "type": "divider"
+            } 
+          ]
+        }
+    docker:
+      - image: cimg/python:3.9
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
+    working_directory: ~/workspace
+
+jobs:
+  build:
+    executor: luxquad-executor
+    steps:
+      - slack/notify:
+          event: always
+          template: slack_build_start
+
+      - checkout
+            
+      - restore_cache:
+          keys:
+          - deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - deps1-
+                     
+      - run:
+          name: Install virtual environments
+          command: |
+            pip install --user --upgrade pip
+            pip install --user virtualenv
+            virtualenv ~/workspace/venv
+            source ~/workspace/venv/bin/activate
+
+      - run: 
+          name: Install dependencies
+          command: |
+            source ~/workspace/venv/bin/activate
+            pip install -r requirements.txt
+
+      - run:
+          name: Install Environment
+          command: |
+            env > .env
+            cp .env prod.env
+
+      - run:
+          name: Run build
+          command: |
+            source ~/workspace/venv/bin/activate
+            sh script/run.sh
+            
+      - slack/notify:
+          event: fail
+          mentions: '@EngineeringTeam'
+          template: slack_build_fail
+
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - ./*
+        
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - ./*
+          
+      - store_artifacts:
+          name: Save test reports
+          path: ~/workspace/.pytest_cache
+          destination: test-reports
+
+      - store_artifacts:
+          name: Save artifacts - tests
+          path: ~/workspace/app/test
+          destination: tests
+
+
+  test:
+    executor: luxquad-executor
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+      - run:
+          name: Run tests
+          command: |
+            source ~/workspace/venv/bin/activate
+            pytest
+
+      - slack/notify:
+          event: fail
+          mentions: '@EngineeringTeam'
+          template: slack_build_fail
+
+  deploy:
+    executor: luxquad-executor
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+
+      - setup_remote_docker:
+          version: 20.10.2
+      
+      - slack/notify:
+          event: pass
+          template: slack_build_success_test
+
+      - run:
+          name: Login to docker hub
+          command: |
+            docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+
+      - run:
+          name: Build docker image
+          command: |
+            docker build -t $IMAGE_NAME:latest . -f Dockerfile
+
+      - run:
+          name: Deploy docker image
+          command: |
+            docker push $IMAGE_NAME:latest
+
+      - slack/notify:
+          event: fail
+          mentions: '@EngineeringTeam'
+          template: slack_build_fail
+
+      - slack/notify:
+          event: pass
+          template: slack_build_success
+
+workflows:
+  build-with-test:
+    jobs:
+      - build:
+          context: SLACK
+          filters: &filters-build-with-test
+            branches:
+              only:
+                - master
+                - dev
+                - /^(feat)[/].+/
+
+      - test:
+          context: SLACK
+          requires:
+            - build
+          filters:
+            <<: *filters-build-with-test
+      - deploy:
+          context: SLACK
+          requires:
+            - test
+          filters:
+            <<: *filters-build-with-test
