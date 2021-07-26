@@ -440,7 +440,6 @@ workflows:
   build-with-test:
     jobs:
       - build:
-          context: SLACK
           filters: &filters-build-with-test
             branches:
               only:
@@ -449,13 +448,11 @@ workflows:
                 - /^(feat)[/].+/
 
       - test:
-          context: SLACK
           requires:
             - build
           filters:
             <<: *filters-build-with-test
       - deploy:
-          context: SLACK
           requires:
             - test
           filters:
