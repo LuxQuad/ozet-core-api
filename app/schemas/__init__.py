@@ -7,4 +7,4 @@
 """
 
 from .user import UserBase, UserCreate, User
-from .user import ItemBase, ItemCreate, Item
+from .item import ItemBase, ItemCreate, Item

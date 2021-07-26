@@ -1,8 +1,13 @@
 # API
 fastapi==0.65.2
 uvicorn==0.14.0
-graphene==2.1.9
 requests==2.26.0
+
+
+# GraphQL API
+graphene>=3.0b5
+graphene-pydantic==0.2.0
+graphene-sqlalchemy==2.3.0
 
 # ORM
 sqlalchemy==1.4.20

@@ -6,4 +6,5 @@
 
 """
 
-from .user import User, Item
+from .user import User, UserGraph, UserConnection
+from .item import Item

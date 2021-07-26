@@ -1,3 +1,15 @@
+"""
+@Author:
+    Bart Kim
+
+@Note:
+
+"""
+from tokenize import String
+import graphene
+from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
+from starlette.graphql import GraphQLApp
+
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -7,6 +19,9 @@ from app import crud, models, schemas
 from app.database import esume_session_local, esume_engine, esume_base
 from app.dependencies import get_token_header, get_db
 
+'''
+    Rest API
+'''
 router = APIRouter(
     prefix="/users",
     tags=["사용자"],
@@ -42,3 +57,30 @@ def create_item_for_user(
     user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
 ):
     return crud.create_user_item(db=db, item=item, user_id=user_id)
+
+
+'''
+    GraphQL API
+'''
+
+
+class Query(graphene.ObjectType):
+    node = graphene.relay.Node.Field()
+
+    user = SQLAlchemyConnectionField(models.user.UserConnection)
+    user_list = SQLAlchemyConnectionField(models.user.UserConnection)
+
+    def resolve_user(self, info, **kwargs):
+        id = kwargs.get('id')
+
+        users_query = models.user.UserGraph.get_query(info)
+
+        if id is not None:
+            return users_query.filter_by(id=id)
+
+    def resolve_user_list(self, info, **kwargs):
+        return models.user.UserGraph.get_query(info).all()
+
+
+def add_graphql_route(service):
+    service.add_route("/user", GraphQLApp(schema=graphene.Schema(query=Query)))

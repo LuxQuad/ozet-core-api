@@ -5,10 +5,15 @@
 @Note:
 
 """
+from graphene import relay
+from graphene_sqlalchemy import SQLAlchemyObjectType
+
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 from app.database import esume_base
+
+from .item import Item
 
 
 class User(esume_base):
@@ -19,15 +24,16 @@ class User(esume_base):
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
 
-    items = relationship("Item", back_populates="owner")
+    items = relationship(Item, back_populates="owner")
 
 
-class Item(esume_base):
-    __tablename__ = "items"
+class UserGraph(SQLAlchemyObjectType):
+    class Meta:
+        model = User
+        interfaces = (relay.Node, )
 
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    description = Column(String, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
 
-    owner = relationship("User", back_populates="items")
+class UserConnection(relay.Connection):
+
+    class Meta:
+        node = UserGraph
