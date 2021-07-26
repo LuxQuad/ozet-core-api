@@ -1,22 +1,37 @@
-from app.routers.items import router
-import os
-from dotenv import load_dotenv
+"""
+@Author:
+    Bart Kim 
+
+@Note:
+
+"""
+import graphene
+from starlette.graphql import GraphQLApp
 
 from fastapi import Depends, FastAPI, HTTPException
 
+from app.settings import settings
 from app.database import esume_session_local, esume_engine, esume_base
+
+from app import middleware
 from app import routers
 
-
-'''
-    Load Environments
-'''
-load_dotenv(verbose=True)
 
 '''
     DB Migrate
 '''
 esume_base.metadata.create_all(bind=esume_engine)
+
+'''
+    GraphQL
+'''
+
+
+class Query(graphene.ObjectType):
+    hello = graphene.String(name=graphene.String(default_value="stranger"))
+
+    def resolve_hello(self, info, name):
+        return "Hello " + name
 
 
 '''
@@ -37,17 +52,27 @@ tags_metadata = [
     },
 ]
 
-app = FastAPI(
-    title=os.getenv('SERVICE_NAME'),
-    description=os.getenv('SERVICE_DESC'),
-    verison=os.getenv('SERVICE_VERSION'),
+
+service = FastAPI(
+    title=settings.SERVICE_NAME,
+    description=settings.SERVICE_NAME,
+    verison=settings.SERVICE_NAME,
     openapi_tags=tags_metadata
 )
+service.add_route("/", GraphQLApp(schema=graphene.Schema(query=Query)))
 
 
 '''
-    Fast API Router Initial
+    Fast API Middleware
 '''
-app.include_router(routers.users.router)
-app.include_router(routers.items.router)
-app.include_router(routers.health.router)
+service.add_middleware(
+    middleware.cors.CORSMiddleware,
+    **middleware.cors.config
+)
+
+'''
+    Fast API Router
+'''
+service.include_router(routers.users.router)
+service.include_router(routers.items.router)
+service.include_router(routers.health.router)
