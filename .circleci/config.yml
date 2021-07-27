@@ -7,7 +7,7 @@ executors:
   luxquad-executor:
     environment:
       IMAGE_NAME: bartkim07120/esume-core-api
-      platform: Esume Core API Service - Fast API
+      PLATFORM: Esume Core API
       slack_build_start: |
         {
           "blocks": [
@@ -15,7 +15,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :crossed_swords: . . . 빌드가 시작되었습니다. ",
+                "text": "$PLATFORM 의 빌드가 시작되었습니다. ",
                 "emoji": true
               }
             },
@@ -24,7 +24,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA1 : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -33,28 +33,14 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
+              },
               "accessory": {
                 "type": "image",
-                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
-                "alt_text": "CircleCI logo"
+                "image_url": "https://i.ibb.co/JKfb103/free-icon-analysis-4624116.png",
+                "alt_text": "Status Image"
               }
             },
             {
@@ -64,13 +50,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :large_green_circle:"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -83,14 +69,14 @@ executors:
             }
           ]
         }
-      slack_build_fail: |
+      slack_task_fail: |
         {
           "blocks": [
             {
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :face_with_head_bandage: . . . 빌드가 실패했습니다.",
+                "text": "$PLATFORM 의 작업이 실패했습니다.",
                 "emoji": true
               }
             },
@@ -99,7 +85,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA1 : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -108,28 +94,14 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
+              },
               "accessory": {
                 "type": "image",
-                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
-                "alt_text": "CircleCI logo"
+                "image_url": "https://i.ibb.co/HVbJ5FC/free-icon-cancelled-5229496.png",
+                "alt_text": "Status Image"
               }
             },
             {
@@ -139,13 +111,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :red_circle:"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -165,7 +137,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :star2: . . . 빌드가 성공했습니다.",
+                "text": "$PLATFORM 의 빌드가 성공했습니다.",
                 "emoji": true
               }
             },
@@ -174,7 +146,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA1 : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -183,28 +155,14 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
+              },
               "accessory": {
                 "type": "image",
-                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
-                "alt_text": "CircleCI logo"
+                "image_url": "https://i.ibb.co/fY8r1g7/free-icon-idea-3854721.png",
+                "alt_text": "Status Image"
               }
             },
             {
@@ -214,13 +172,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :large_green_circle:"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -233,14 +191,14 @@ executors:
             }
           ]
         }
-      slack_build_success_test: |
+      slack_deploy_success: |
         {
           "blocks": [
             {
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :placard: . . . 모든 테스트를 통과 했습니다.",
+                "text": "$PLATFORM 의 배포가 성공했습니다.",
                 "emoji": true
               }
             },
@@ -249,7 +207,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA1 : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -258,28 +216,14 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
+              },
               "accessory": {
                 "type": "image",
-                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
-                "alt_text": "CircleCI logo"
+                "image_url": "https://i.ibb.co/52X6Dnc/free-icon-backlog-5229430.png",
+                "alt_text": "Status Image"
               }
             },
             {
@@ -289,13 +233,75 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :large_green_circle:"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "CircleCI",
+                  "emoji": true
+                },
+                "value": "click_me_123",
+                "url": "${CIRCLE_BUILD_URL}",
+                "action_id": "button-action"
+              }
+            },
+            {
+              "type": "divider"
+            }
+          ]
+        }
+      slack_test_success: |
+        {
+          "blocks": [
+            {
+              "type": "header",
+              "text": {
+                "type": "plain_text",
+                "text": "$PLATFORM 의 모든 테스트를 통과 했습니다.",
+                "emoji": true
+              }
+            },
+            {
+              "type": "context",
+              "elements": [
+                {
+                  "type": "mrkdwn",
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA1 : $CIRCLE_SHA1"
+                  
+                }
+              ]
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "text": {
+                  "type": "mrkdwn",
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
+              },
+              "accessory": {
+                "type": "image",
+                "image_url": "https://i.ibb.co/MsHs2wm/free-icon-checklist-4624037.png",
+                "alt_text": "Status Image"
+              }
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :large_green_circle:"
+              },
+              "accessory": {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -354,7 +360,7 @@ jobs:
       - slack/notify:
           event: fail
           mentions: '@EngineeringTeam'
-          template: slack_build_fail
+          template: slack_task_fail
 
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
@@ -390,8 +396,16 @@ jobs:
       - slack/notify:
           event: fail
           mentions: '@EngineeringTeam'
-          template: slack_build_fail
+          template: slack_task_fail
 
+      - slack/notify:
+          event: pass
+          template: slack_test_success
+
+      - slack/notify:
+          event: pass
+          template: slack_build_success
+          
   deploy:
     executor: luxquad-executor
     steps:
@@ -400,10 +414,6 @@ jobs:
 
       - setup_remote_docker:
           version: 20.10.2
-      
-      - slack/notify:
-          event: pass
-          template: slack_build_success_test
 
       - run:
           name: Install Package
@@ -433,11 +443,12 @@ jobs:
       - slack/notify:
           event: fail
           mentions: '@EngineeringTeam'
-          template: slack_build_fail
+          template: slack_task_fail
 
       - slack/notify:
           event: pass
-          template: slack_build_success
+          template: slack_deploy_success
+
 
 
 workflows:
@@ -447,18 +458,32 @@ workflows:
           filters: &filters-build-with-test
             branches:
               only:
-                - master
                 - dev
                 - /^(feat)[/].+/
-                - /^(circleci)[/].+/
 
       - test:
           requires:
             - build
           filters:
             <<: *filters-build-with-test
+
+  deploy:
+    jobs:
+      - build:
+          filters: &filters-deploy
+            branches:
+              only:
+                - master
+                - /^(circleci)[/].+/
+
+      - test:
+          requires:
+            - build
+          filters:
+            <<: *filters-deploy
+
       - deploy:
           requires:
             - test
           filters:
-            <<: *filters-build-with-test
+            <<: *filters-deploy
