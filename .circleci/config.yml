@@ -24,7 +24,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -64,13 +64,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. - \`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "Build",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -99,7 +99,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -139,13 +139,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. - \`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "Build",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -174,7 +174,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -214,13 +214,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. - \`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "Build",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -249,7 +249,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -289,13 +289,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. - \`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "Build",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -324,7 +324,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
                   
                 }
               ]
@@ -365,13 +365,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. - \`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "Build",
+                  "text": "CircleCI",
                   "emoji": true
                 },
                 "value": "click_me_123",
