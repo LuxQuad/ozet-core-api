@@ -15,7 +15,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :crossed_swords: . . . 빌드가 시작되었습니다. ",
+                "text": "$PLATFORM의 빌드가 시작되었습니다. ",
                 "emoji": true
               }
             },
@@ -48,7 +48,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
                 }
               ],
               "accessory": {
@@ -90,7 +90,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :face_with_head_bandage: . . . 빌드가 실패했습니다.",
+                "text": "$PLATFORM 의 빌드가 실패했습니다.",
                 "emoji": true
               }
             },
@@ -123,7 +123,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
                 }
               ],
               "accessory": {
@@ -165,7 +165,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :star2: . . . 빌드가 성공했습니다.",
+                "text": "$PLATFORM 의 빌드가 성공했습니다.",
                 "emoji": true
               }
             },
@@ -198,7 +198,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
                 }
               ],
               "accessory": {
@@ -240,7 +240,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :star2: . . . 배포가 성공했습니다.",
+                "text": "$PLATFORM 의 배포가 성공했습니다.",
                 "emoji": true
               }
             },
@@ -273,7 +273,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
                 }
               ],
               "accessory": {
@@ -315,7 +315,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :placard: . . . 모든 테스트를 통과 했습니다.",
+                "text": "$PLATFORM 의 모든 테스트를 통과 했습니다.",
                 "emoji": true
               }
             },
@@ -325,6 +325,7 @@ executors:
                 {
                   "type": "mrkdwn",
                   "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  
                 }
               ]
             },
@@ -348,7 +349,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
                 }
               ],
               "accessory": {
@@ -469,7 +470,12 @@ jobs:
 
       - slack/notify:
           event: pass
+          template: slack_test_success
+          
+      - slack/notify:
+          event: pass
           template: slack_build_success
+          
   deploy:
     executor: luxquad-executor
     steps:
@@ -478,10 +484,6 @@ jobs:
 
       - setup_remote_docker:
           version: 20.10.2
-      
-      - slack/notify:
-          event: pass
-          template: slack_test_success
 
       - run:
           name: Install Package
