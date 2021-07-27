@@ -24,7 +24,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
                 }
               ]
             },
@@ -64,13 +64,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "Build",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -99,7 +99,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
                 }
               ]
             },
@@ -139,13 +139,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "Build",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -174,7 +174,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
                 }
               ]
             },
@@ -214,13 +214,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "Build",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -249,7 +249,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
                 }
               ]
             },
@@ -289,13 +289,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "Build",
                   "emoji": true
                 },
                 "value": "click_me_123",
@@ -324,7 +324,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
                   
                 }
               ]
@@ -365,13 +365,13 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
               },
               "accessory": {
                 "type": "button",
                 "text": {
                   "type": "plain_text",
-                  "text": "링크",
+                  "text": "Build",
                   "emoji": true
                 },
                 "value": "click_me_123",
