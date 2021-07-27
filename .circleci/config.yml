@@ -50,7 +50,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Pass \` *|* *Job* :`\$CIRCLE_JOB`\"
+                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Pass \` *|* *Job* :\`$CIRCLE_JOB\`"
               },
               "accessory": {
                 "type": "button",
@@ -111,7 +111,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Fail \` *|* *Job* :`\$CIRCLE_JOB`\"
+                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Fail \` *|* *Job* :\`$CIRCLE_JOB\`"
               },
               "accessory": {
                 "type": "button",
@@ -172,7 +172,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Pass \` *|* *Job* :`\$CIRCLE_JOB`\"
+                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Pass \` *|* *Job* :\`$CIRCLE_JOB\`"
               },
               "accessory": {
                 "type": "button",
@@ -233,7 +233,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Pass \` *|* *Job* :`\$CIRCLE_JOB`\"
+                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Pass \` *|* *Job* :\`$CIRCLE_JOB\`"
               },
               "accessory": {
                 "type": "button",
@@ -295,7 +295,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Pass \` *|* *Job* :`\$CIRCLE_JOB`\"
+                "text": "*Request No*. : \`$CIRCLE_WORKFLOW_ID\` *|* *Status* : \`Pass \` *|* *Job* :\`$CIRCLE_JOB\`"
               },
               "accessory": {
                 "type": "button",
