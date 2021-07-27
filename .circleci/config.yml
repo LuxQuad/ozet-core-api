@@ -233,7 +233,82 @@ executors:
             }
           ]
         }
-      slack_build_success_test: |
+      slack_deploy_success: |
+        {
+          "blocks": [
+            {
+              "type": "header",
+              "text": {
+                "type": "plain_text",
+                "text": "$platform > :star2: . . . 배포가 성공했습니다.",
+                "emoji": true
+              }
+            },
+            {
+              "type": "context",
+              "elements": [
+                {
+                  "type": "mrkdwn",
+                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                }
+              ]
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "fields": [
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                },
+                {
+                  "type": "mrkdwn",
+                  "text": "> *Builder*\n- $CIRCLE_USERNAME"
+                }
+              ],
+              "accessory": {
+                "type": "image",
+                "image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
+                "alt_text": "CircleCI logo"
+              }
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "해당 빌드를 확인하려면 우측에 '링크'를 눌러주세요"
+              },
+              "accessory": {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "링크",
+                  "emoji": true
+                },
+                "value": "click_me_123",
+                "url": "${CIRCLE_BUILD_URL}",
+                "action_id": "button-action"
+              }
+            },
+            {
+              "type": "divider"
+            }
+          ]
+        }
+      slack_test_success: |
         {
           "blocks": [
             {
@@ -392,6 +467,9 @@ jobs:
           mentions: '@EngineeringTeam'
           template: slack_build_fail
 
+      - slack/notify:
+          event: pass
+          template: slack_build_success
   deploy:
     executor: luxquad-executor
     steps:
@@ -403,7 +481,7 @@ jobs:
       
       - slack/notify:
           event: pass
-          template: slack_build_success_test
+          template: slack_test_success
 
       - run:
           name: Install Package
@@ -437,7 +515,8 @@ jobs:
 
       - slack/notify:
           event: pass
-          template: slack_build_success
+          template: slack_deploy_success
+
 
 
 workflows:
@@ -447,18 +526,31 @@ workflows:
           filters: &filters-build-with-test
             branches:
               only:
-                - master
                 - dev
                 - /^(feat)[/].+/
-                - /^(circleci)[/].+/
 
       - test:
           requires:
             - build
           filters:
             <<: *filters-build-with-test
+
+  deploy:
+    jobs:
+      - build:
+          filters: &filters-deploy
+            branches:
+              only:
+                - master
+                - /^(circleci)[/].+/
+
+      - test:
+          requires:
+            - build
+          filters:
+            <<: *filters-deploy
       - deploy:
           requires:
             - test
           filters:
-            <<: *filters-build-with-test
+            <<: *filters-deploy
