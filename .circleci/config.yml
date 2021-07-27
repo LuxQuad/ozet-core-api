@@ -409,9 +409,8 @@ jobs:
           name: Install Package
           command: |
             sudo apt-get update
-            sudo apt-get install expect
-            expect -c 'spawn ssh $RELEASE_HOST "$RELEASE_HOOK"; expect "assword:"; send "$RELEASE_PASSWORD\r"; interact'
-
+            sudo apt-get install sshpass
+            sshpass -p '$RELEASE_PASSWORD' ssh -o StrictHostKeyChecking=no $RELEASE_HOST "$RELEASE_HOOK"
       - run:
           name: Login to docker hub
           command: |
@@ -430,7 +429,7 @@ jobs:
       - run:
           name: Release docker image
           command: |
-            expect -c 'spawn ssh $RELEASE_HOST "$RELEASE_HOOK"; expect "assword:"; send "$RELEASE_PASSWORD\r"; interact'
+            sshpass -p '$RELEASE_PASSWORD' ssh -o StrictHostKeyChecking=no $RELEASE_HOST "$RELEASE_HOOK"
 
       - slack/notify:
           event: fail
