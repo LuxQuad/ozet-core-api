@@ -64,7 +64,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
+                "text": "Request No. : `$CIRCLE_WORKFLOW_ID`"
               },
               "accessory": {
                 "type": "button",
@@ -139,7 +139,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
+                "text": "Request No. : `$CIRCLE_WORKFLOW_ID`"
               },
               "accessory": {
                 "type": "button",
@@ -214,7 +214,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
+                "text": "Request No. : `$CIRCLE_WORKFLOW_ID`"
               },
               "accessory": {
                 "type": "button",
@@ -289,7 +289,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
+                "text": "Request No. : `$CIRCLE_WORKFLOW_ID`"
               },
               "accessory": {
                 "type": "button",
@@ -365,7 +365,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No. : $CIRCLE_WORKFLOW_ID"
+                "text": "Request No. : `$CIRCLE_WORKFLOW_ID`"
               },
               "accessory": {
                 "type": "button",
