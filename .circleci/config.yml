@@ -15,7 +15,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$PLATFORM의 빌드가 시작되었습니다. ",
+                "text": "$PLATFORM 의 빌드가 시작되었습니다. ",
                 "emoji": true
               }
             },
@@ -24,7 +24,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
                 }
               ]
             },
@@ -99,7 +99,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
                 }
               ]
             },
@@ -174,7 +174,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
                 }
               ]
             },
@@ -249,7 +249,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
                 }
               ]
             },
@@ -324,7 +324,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">$(date +'%m/%d/%Y %T')\n>$CIRCLE_SHA1"
+                  "text": ">Date : $(date +'%m/%d/%Y %T')\n>SHA : $CIRCLE_SHA1\n>Request No. : $CIRCLE_WORKFLOW_ID"
                   
                 }
               ]
@@ -471,7 +471,7 @@ jobs:
       - slack/notify:
           event: pass
           template: slack_test_success
-          
+
       - slack/notify:
           event: pass
           template: slack_build_success
