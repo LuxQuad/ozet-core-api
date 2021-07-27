@@ -33,16 +33,10 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+              },
               "accessory": {
                 "type": "image",
                 "image_url": "https://i.ibb.co/JKfb103/free-icon-analysis-4624116.png",
@@ -100,16 +94,10 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+              },
               "accessory": {
                 "type": "image",
                 "image_url": "https://i.ibb.co/HVbJ5FC/free-icon-cancelled-5229496.png",
@@ -167,16 +155,10 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+              },
               "accessory": {
                 "type": "image",
                 "image_url": "https://i.ibb.co/fY8r1g7/free-icon-idea-3854721.png",
@@ -234,16 +216,10 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+              },
               "accessory": {
                 "type": "image",
                 "image_url": "https://i.ibb.co/52X6Dnc/free-icon-backlog-5229430.png",
@@ -302,16 +278,10 @@ executors:
             },
             {
               "type": "section",
-              "fields": [
-                {
+              "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Requester*\n- $CIRCLE_USERNAME"
-                }
-              ],
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+              },
               "accessory": {
                 "type": "image",
                 "image_url": "https://i.ibb.co/MsHs2wm/free-icon-checklist-4624037.png",
