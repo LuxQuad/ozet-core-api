@@ -7,7 +7,7 @@ executors:
   luxquad-executor:
     environment:
       IMAGE_NAME: bartkim07120/esume-core-api
-      platform: Esume Core API Service - Fast API
+      PLATFORM: Esume Core API Service - Fast API
       slack_build_start: |
         {
           "blocks": [
@@ -15,7 +15,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :crossed_swords: . . . 빌드가 시작되었습니다. ",
+                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :crossed_swords: . . . 빌드가 시작되었습니다. ",
                 "emoji": true
               }
             },
@@ -40,7 +40,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
                 },
                 {
                   "type": "mrkdwn",
@@ -90,7 +90,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :face_with_head_bandage: . . . 빌드가 실패했습니다.",
+                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :face_with_head_bandage: . . . 빌드가 실패했습니다.",
                 "emoji": true
               }
             },
@@ -115,7 +115,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
                 },
                 {
                   "type": "mrkdwn",
@@ -165,7 +165,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :star2: . . . 빌드가 성공했습니다.",
+                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :star2: . . . 빌드가 성공했습니다.",
                 "emoji": true
               }
             },
@@ -190,7 +190,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
                 },
                 {
                   "type": "mrkdwn",
@@ -240,7 +240,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :star2: . . . 배포가 성공했습니다.",
+                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :star2: . . . 배포가 성공했습니다.",
                 "emoji": true
               }
             },
@@ -265,7 +265,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
                 },
                 {
                   "type": "mrkdwn",
@@ -315,7 +315,7 @@ executors:
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$platform > :placard: . . . 모든 테스트를 통과 했습니다.",
+                "text": "[$CIRCLE_WORKFLOW_ID] $PLATFORM > :placard: . . . 모든 테스트를 통과 했습니다.",
                 "emoji": true
               }
             },
@@ -340,7 +340,7 @@ executors:
                 },
                 {
                   "type": "mrkdwn",
-                  "text": "> *Tag*\n- $CIRCLE_TAG"
+                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
                 },
                 {
                   "type": "mrkdwn",
@@ -549,6 +549,7 @@ workflows:
             - build
           filters:
             <<: *filters-deploy
+
       - deploy:
           requires:
             - test
