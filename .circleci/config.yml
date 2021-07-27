@@ -410,7 +410,7 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install sshpass
-
+            sshpass -p '!esume@' ssh ubuntu@superposition.link "sh /docker/esume-core-api/.script/deploy.sh"
       - run:
           name: Login to docker hub
           command: |
