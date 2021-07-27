@@ -35,7 +35,7 @@ executors:
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
               },
               "accessory": {
                 "type": "image",
@@ -96,7 +96,7 @@ executors:
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
               },
               "accessory": {
                 "type": "image",
@@ -157,7 +157,7 @@ executors:
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
               },
               "accessory": {
                 "type": "image",
@@ -218,7 +218,7 @@ executors:
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
               },
               "accessory": {
                 "type": "image",
@@ -280,7 +280,7 @@ executors:
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\n> *Requester*\n- $CIRCLE_USERNAME"
+                  "text": "> *Branch*\n- \`$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH\`\n> *Requester*\n- \`$CIRCLE_USERNAME\`"
               },
               "accessory": {
                 "type": "image",
