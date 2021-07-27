@@ -36,15 +36,7 @@ executors:
               "fields": [
                 {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
                 },
                 {
                   "type": "mrkdwn",
@@ -64,7 +56,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No. \`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
@@ -111,15 +103,7 @@ executors:
               "fields": [
                 {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
                 },
                 {
                   "type": "mrkdwn",
@@ -139,7 +123,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No. \`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
@@ -186,15 +170,7 @@ executors:
               "fields": [
                 {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
                 },
                 {
                   "type": "mrkdwn",
@@ -214,7 +190,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No. \`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
@@ -261,15 +237,7 @@ executors:
               "fields": [
                 {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
                 },
                 {
                   "type": "mrkdwn",
@@ -289,7 +257,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No. \`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
@@ -337,15 +305,7 @@ executors:
               "fields": [
                 {
                   "type": "mrkdwn",
-                  "text": "> *Project*\n- $CIRCLE_PROJECT_REPONAME"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Build No.*\n- $CIRCLE_PREVIOUS_BUILD_NUM"
-                },
-                {
-                  "type": "mrkdwn",
-                  "text": "> *Branch*\n- $CIRCLE_BRANCH"
+                  "text": "> *Branch*\n- $CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH"
                 },
                 {
                   "type": "mrkdwn",
@@ -365,7 +325,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Request No.\`$CIRCLE_WORKFLOW_ID\`"
+                "text": "Request No. \`$CIRCLE_WORKFLOW_ID\`"
               },
               "accessory": {
                 "type": "button",
