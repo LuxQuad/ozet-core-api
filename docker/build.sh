@@ -1,2 +1,4 @@
 #!/bin/bash
-docker build -t bartkim07120/esume-core-api:latest .
+DOCKER_IMAGE_NAME=bartkim07120/esume-core-api
+
+docker build -t ${DOCKER_IMAGE_NAME}:latest .

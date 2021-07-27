@@ -1,1 +1,6 @@
-uvicorn app.main:service --port=8000 --reload --env-file=.env
+#!/bin/bash
+PORT=8000
+ENV=.env
+SERVICE=app.main:service
+
+uvicorn ${SERVICE} --port=${PORT} --reload --env-file=${ENV}
