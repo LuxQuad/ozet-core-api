@@ -406,6 +406,12 @@ jobs:
           template: slack_build_success_test
 
       - run:
+          name: Install Package
+          command: |
+            sudo apt-get update
+            sudo apt-get install sshpass
+
+      - run:
           name: Login to docker hub
           command: |
             docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
@@ -423,7 +429,6 @@ jobs:
       - run:
           name: Release docker image
           command: |
-            sudo apt-get install sshpass
             sshpass -p $RELEASE_PASSWORD ssh $RELEASE_HOST $RELEASE_HOOK
 
       - slack/notify:
