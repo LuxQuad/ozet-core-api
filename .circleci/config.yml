@@ -6,7 +6,7 @@ orbs:
 executors:
   luxquad-executor:
     environment:
-      IMAGE_NAME: luxquad/esume-core-api
+      IMAGE_NAME: bartkim07120/esume-core-api
       platform: Esume Core API Service - Fast API
       slack_build_start: |
         {

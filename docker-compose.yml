@@ -1,16 +1,16 @@
 services:
-  esume-api-nginx:
-    image: nginx:latest
-    container_name: esume-api-nginx
-    restart: "on-failure"
-    ports:
-      - 10411:10411
-    volumes:
-      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+    esume-api-nginx:
+        image: nginx:latest
+        container_name: esume-api-nginx
+        restart: "on-failure"
+        ports:
+            - 10411:10411
+        volumes:
+            - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
 
-  esume-api:
-    image: luxquad/esume-api
-    container_name: esume-api
-    restart: "on-failure"
-    env_file:
-      - "./.env"
+    esume-api:
+        image: bartkim07120/esume-api
+        container_name: esume-api
+        restart: "on-failure"
+        env_file:
+            - "./.env"
