@@ -69,14 +69,14 @@ executors:
             }
           ]
         }
-      slack_build_fail: |
+      slack_task_fail: |
         {
           "blocks": [
             {
               "type": "header",
               "text": {
                 "type": "plain_text",
-                "text": "$PLATFORM 의 빌드가 실패했습니다.",
+                "text": "$PLATFORM 의 작업이 실패했습니다.",
                 "emoji": true
               }
             },
@@ -360,7 +360,7 @@ jobs:
       - slack/notify:
           event: fail
           mentions: '@EngineeringTeam'
-          template: slack_build_fail
+          template: slack_task_fail
 
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
@@ -396,7 +396,7 @@ jobs:
       - slack/notify:
           event: fail
           mentions: '@EngineeringTeam'
-          template: slack_build_fail
+          template: slack_task_fail
 
       - slack/notify:
           event: pass
@@ -443,7 +443,7 @@ jobs:
       - slack/notify:
           event: fail
           mentions: '@EngineeringTeam'
-          template: slack_build_fail
+          template: slack_task_fail
 
       - slack/notify:
           event: pass
