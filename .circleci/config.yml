@@ -429,7 +429,7 @@ jobs:
       - run:
           name: Release docker image
           command: |
-            sshpass -p $RELEASE_PASSWORD ssh $RELEASE_HOST $RELEASE_HOOK
+            sshpass -p '$RELEASE_PASSWORD' ssh $RELEASE_HOST "$RELEASE_HOOK"
 
       - slack/notify:
           event: fail
