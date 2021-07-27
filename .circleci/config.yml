@@ -24,7 +24,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -85,7 +85,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -146,7 +146,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -207,7 +207,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA : $CIRCLE_SHA1"
                 }
               ]
             },
@@ -268,7 +268,7 @@ executors:
               "elements": [
                 {
                   "type": "mrkdwn",
-                  "text": ">When : $(date +'%Y/%m/%d/ %T')\n>SHA : $CIRCLE_SHA1"
+                  "text": ">When : $(date +'%Y/%m/%d @%T')\n>SHA : $CIRCLE_SHA1"
                   
                 }
               ]
