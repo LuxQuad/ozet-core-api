@@ -409,8 +409,9 @@ jobs:
           name: Install Package
           command: |
             sudo apt-get update
-            sudo apt-get install sshpass
-            sshpass -p '!esume@' ssh ubuntu@superposition.link "sh /docker/esume-core-api/.script/deploy.sh"
+            sudo apt-get install expect
+            expect -c 'spawn ssh $RELEASE_HOST "$RELEASE_HOOK"; expect "assword:"; send "$RELEASE_PASSWORD\r"; interact'
+
       - run:
           name: Login to docker hub
           command: |
@@ -429,7 +430,7 @@ jobs:
       - run:
           name: Release docker image
           command: |
-            sshpass -p '$RELEASE_PASSWORD' ssh $RELEASE_HOST "$RELEASE_HOOK"
+            expect -c 'spawn ssh $RELEASE_HOST "$RELEASE_HOOK"; expect "assword:"; send "$RELEASE_PASSWORD\r"; interact'
 
       - slack/notify:
           event: fail
