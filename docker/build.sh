@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t luxquad/esume-core-api:latest .
+docker build -t bartkim07120/esume-core-api:latest .
