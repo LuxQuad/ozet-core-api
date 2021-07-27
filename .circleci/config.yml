@@ -423,10 +423,8 @@ jobs:
       - run:
           name: Release docker image
           command: |
-            sudo apt-get install expect
-            sudo apt-get install sshpass 
-
-            expect -c 'spawn ssh $RELEASE_HOST "$RELEASE_HOOK"; expect "assword:"; send "$RELEASE_PASSWORD\r"; interact'
+            sudo apt-get install sshpass
+            sshpass -p $RELEASE_PASSWORD ssh $RELEASE_HOST $RELEASE_HOOK
 
       - slack/notify:
           event: fail
