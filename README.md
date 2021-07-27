@@ -1,4 +1,4 @@
-# **Esume API** - [![CircleCI](https://circleci.com/gh/LuxQuad/esume-api/tree/master.svg?style=svg&circle-token=e8cf4faab2b5a1b40b12f998fa72789c566eb35e)](https://circleci.com/gh/LuxQuad/esume-api/tree/master) [![Python](https://img.shields.io/badge/python-3.7.4-brightgreen.svg)]() [![FastAPI](https://img.shields.io/badge/FastAPI-0.1.4-brightgreen.svg)]() [![Docker](https://img.shields.io/badge/docker_engine-20.1.2-brightgreen.svg)]() 
+# **Esume Core API** - [![CircleCI](https://circleci.com/gh/LuxQuad/esume-api/tree/master.svg?style=svg&circle-token=e8cf4faab2b5a1b40b12f998fa72789c566eb35e)](https://circleci.com/gh/LuxQuad/esume-api/tree/master) [![Python](https://img.shields.io/badge/python-3.7.4-brightgreen.svg)]() [![FastAPI](https://img.shields.io/badge/FastAPI-0.1.4-brightgreen.svg)]() [![Docker](https://img.shields.io/badge/docker_engine-20.1.2-brightgreen.svg)]() 
 
 # **Convention** 
 ---
