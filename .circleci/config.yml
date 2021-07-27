@@ -410,7 +410,6 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install sshpass
-
       - run:
           name: Login to docker hub
           command: |
@@ -429,7 +428,7 @@ jobs:
       - run:
           name: Release docker image
           command: |
-            sshpass -p '$RELEASE_PASSWORD' ssh $RELEASE_HOST "$RELEASE_HOOK"
+            sshpass -p $RELEASE_PASSWORD ssh -o StrictHostKeyChecking=no $RELEASE_HOST "$RELEASE_HOOK"
 
       - slack/notify:
           event: fail
