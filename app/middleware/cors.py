@@ -1,3 +1,11 @@
+"""
+@Author:
+    Bart Kim 
+
+@Note:
+
+"""
+
 from fastapi.middleware.cors import CORSMiddleware
 
 origins: list = [
