@@ -54,3 +54,15 @@ def test_get_user(is_testcase=True):
     response = client.get("/users", headers=headers)
 
     assert response.status_code == 200
+
+
+def test_get_user(is_testcase=True):
+    token_key = test_login_user(is_testcase=False)['access_token']
+
+    headers = {
+        "Authorization": f"Bearer {token_key}",
+    }
+
+    response = client.get("/users/items", headers=headers)
+
+    assert response.status_code == 200
