@@ -6,5 +6,5 @@
 
 """
 
-from .user import User, UserGraph, UserConnection
+from .user import User, Token, UserGraph, UserConnection
 from .item import Item

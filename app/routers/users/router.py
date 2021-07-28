@@ -13,6 +13,7 @@ from starlette.graphql import GraphQLApp
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException
+
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas

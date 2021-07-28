@@ -27,7 +27,7 @@ router = APIRouter(
 
 
 @router.get("/")
-async def root():
+async def health_check():
     return {"status": "live"}
 
 

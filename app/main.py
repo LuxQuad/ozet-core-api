@@ -6,6 +6,7 @@
 
 """
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi_pagination import add_pagination
 
 from app.settings import settings
 from app.database import esume_session_local, esume_engine, esume_base
@@ -19,6 +20,7 @@ from app import routers
 '''
 esume_base.metadata.create_all(bind=esume_engine)
 
+print('DB Sync')
 
 '''
     Fast API Module Initial
@@ -46,7 +48,6 @@ service = FastAPI(
     openapi_tags=tags_metadata
 )
 
-
 '''
     Fast API Middleware
 '''
@@ -73,3 +74,9 @@ if settings.SENTRY_ENABLE:
 '''
 
 routers.users.add_graphql_route(service)
+
+'''
+    Fast API Pagination Init
+'''
+
+add_pagination(service)
