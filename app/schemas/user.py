@@ -13,6 +13,11 @@ from pydantic import BaseModel
 from .item import Item
 
 
+class Token(BaseModel):
+    id: int
+    key: str
+
+
 class UserBase(BaseModel):
     email: str
 

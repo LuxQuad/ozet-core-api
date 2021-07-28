@@ -9,6 +9,8 @@
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi_pagination import Page, paginate
+
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
@@ -27,10 +29,10 @@ router = APIRouter(
 '''
 
 
-@router.get("/", response_model=List[schemas.Item])
+@router.get("/", response_model=Page[schemas.Item])
 def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     items = crud.get_items(db, skip=skip, limit=limit)
-    return items
+    return paginate(items)
 
 
 '''
