@@ -12,13 +12,16 @@ from starlette.graphql import GraphQLApp
 
 from typing import List
 
-from fastapi import APIRouter, Depends, HTTPException
+from datetime import datetime, timedelta
+
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
 
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
 from app.database import esume_session_local, esume_engine, esume_base
-from app.dependencies import get_token_header, get_db
+from app.dependencies import get_db
 
 '''
     Rest API
@@ -26,62 +29,56 @@ from app.dependencies import get_token_header, get_db
 router = APIRouter(
     prefix="/users",
     tags=["사용자"],
-    dependencies=[Depends(get_token_header)],
+    dependencies=[],
     responses={404: {"description": "Not found"}},
 )
 
 
 @router.post("/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    db_user = crud.get_user_by_email(db, email=user.email)
+    db_user = crud.get_user(db, username=user.username)
+
     if db_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
+        raise HTTPException(status_code=400, detail="Username already registered")
+
     return crud.create_user(db=db, user=user)
 
 
-@router.get("/", response_model=List[schemas.User])
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = crud.get_users(db, skip=skip, limit=limit)
-    return users
+@router.get("/", response_model=schemas.User)
+async def read_users_me(current_user: schemas.User = Depends(crud.user.get_current_active_user)):
+    return current_user
 
 
-@router.get("/{user_id}", response_model=schemas.User)
-def read_user(user_id: int, db: Session = Depends(get_db)):
-    db_user = crud.get_user(db, user_id=user_id)
-    if db_user is None:
-        raise HTTPException(status_code=404, detail="User not found")
-    return db_user
+@router.post("/token", response_model=schemas.Token)
+async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    user = crud.user.authenticate_user(db, form_data.username, form_data.password)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    access_token_expires = timedelta(minutes=crud.user.ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = crud.user.create_access_token(
+        data={"sub": user.username}, expires_delta=access_token_expires
+    )
+
+    return {"access_token": access_token, "token_type": "bearer"}
 
 
-@router.post("/{user_id}/items/", response_model=schemas.Item)
-def create_item_for_user(
-    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)
+@router.get("/items/")
+async def read_own_items(
+    db: Session = Depends(get_db),
+    current_user: schemas.User = Depends(crud.user.get_current_active_user)
 ):
-    return crud.create_user_item(db=db, item=item, user_id=user_id)
+    return crud.item.get_itmes_by_user(db=db, owner_id=current_user.id)
 
 
-'''
-    GraphQL API
-'''
-
-
-class Query(graphene.ObjectType):
-    node = graphene.relay.Node.Field()
-
-    user = SQLAlchemyConnectionField(models.user.UserConnection)
-    user_list = SQLAlchemyConnectionField(models.user.UserConnection)
-
-    def resolve_user(self, info, **kwargs):
-        id = kwargs.get('id')
-
-        users_query = models.user.UserGraph.get_query(info)
-
-        if id is not None:
-            return users_query.filter_by(id=id)
-
-    def resolve_user_list(self, info, **kwargs):
-        return models.user.UserGraph.get_query(info).all()
-
-
-def add_graphql_route(service):
-    service.add_route("/user", GraphQLApp(schema=graphene.Schema(query=Query)))
+@router.post("/items/", response_model=schemas.Item)
+def create_item_for_user(
+    item: schemas.ItemCreate,
+    db: Session = Depends(get_db),
+    current_user: schemas.User = Depends(crud.user.get_current_active_user),
+):
+    return crud.create_user_item(db=db, item=item, user_id=current_user.id)

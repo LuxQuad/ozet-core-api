@@ -9,11 +9,6 @@
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-
-from app import crud, models, schemas
-from app.database import esume_session_local, esume_engine, esume_base
-from app.dependencies import get_token_header, get_db
 
 router = APIRouter(
     prefix="/sentry",

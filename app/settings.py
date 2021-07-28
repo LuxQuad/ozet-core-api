@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     SERVICE_DESC: str = os.getenv('SERVICE_DESC')
     SERVICE_VERSION: str = os.getenv('SERVICE_VERSION')
 
+    SECRET_KEY: str = os.getenv('SECRET_KEY')
+    ALGORITHM: str = os.getenv('ALGORITHM')
+
     X_TOKEN: str = os.getenv('X_TOKEN')
     TOKEN: str = os.getenv('TOKEN')
 

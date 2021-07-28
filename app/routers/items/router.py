@@ -15,12 +15,12 @@ from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
 from app.database import esume_session_local, esume_engine, esume_base
-from app.dependencies import get_token_header, get_db
+from app.dependencies import get_db
 
 router = APIRouter(
     prefix="/items",
     tags=["아이템"],
-    dependencies=[Depends(get_token_header)],
+    dependencies=[],
     responses={404: {"description": "Not found"}},
 )
 
