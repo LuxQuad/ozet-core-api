@@ -50,7 +50,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :large_green_circle:"
+                "text": "*Req No.* : \`$CIRCLE_WORKFLOW_ID\`\n*Job Status* : :large_green_circle:"
               },
               "accessory": {
                 "type": "button",
@@ -111,7 +111,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :red_circle:"
+                "text": "*Req No.* : \`$CIRCLE_WORKFLOW_ID\`\n*Job Status* : :red_circle:"
               },
               "accessory": {
                 "type": "button",
@@ -172,7 +172,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :large_green_circle:"
+                "text": "*Req No.* : \`$CIRCLE_WORKFLOW_ID\`\n*Job Status* : :large_green_circle:"
               },
               "accessory": {
                 "type": "button",
@@ -233,7 +233,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :large_green_circle:"
+                "text": "*Req No.* : \`$CIRCLE_WORKFLOW_ID\`\n*Job Status* : :large_green_circle:"
               },
               "accessory": {
                 "type": "button",
@@ -295,7 +295,7 @@ executors:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "*Request No.* : \`$CIRCLE_WORKFLOW_ID\` *|* *Job Status* : :large_green_circle:"
+                "text": "*Req No.* : \`$CIRCLE_WORKFLOW_ID\`\n*Job Status* : :large_green_circle:"
               },
               "accessory": {
                 "type": "button",

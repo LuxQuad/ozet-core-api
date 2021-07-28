@@ -6,9 +6,13 @@
 
 """
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi_pagination import add_pagination
+from jose import JWTError, jwt
+from passlib.context import CryptContext
 
 from app.settings import settings
 from app.database import esume_session_local, esume_engine, esume_base
+
 
 from app import middleware
 from app import routers
@@ -19,6 +23,7 @@ from app import routers
 '''
 esume_base.metadata.create_all(bind=esume_engine)
 
+print('DB Sync')
 
 '''
     Fast API Module Initial
@@ -46,7 +51,6 @@ service = FastAPI(
     openapi_tags=tags_metadata
 )
 
-
 '''
     Fast API Middleware
 '''
@@ -68,8 +72,9 @@ service.include_router(routers.health.router)
 if settings.SENTRY_ENABLE:
     service.include_router(routers.sentry.router)
 
+
 '''
-    Fast API GraphQL Router
+    Fast API Pagination Init
 '''
 
-routers.users.add_graphql_route(service)
+add_pagination(service)

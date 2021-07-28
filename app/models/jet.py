@@ -14,7 +14,9 @@ from app.database import esume_base
 class Jet(esume_base):
     __tablename__ = "jets"
 
+    # Identifyer
     id = Column(Integer, primary_key=True, index=True)
-    owner_id = Column(Integer, ForeignKey("users.id"))
 
+    # Relationship
+    owner_id = Column(Integer, ForeignKey("users.id"))
     owner = relationship("User", back_populates="items")

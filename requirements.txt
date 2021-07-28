@@ -1,8 +1,15 @@
 # API
 fastapi==0.65.2
+fastapi-pagination==0.8.2
 uvicorn==0.14.0
 requests==2.26.0
 
+# Auth
+python-jose==3.3.0
+cryptography==3.4.7
+bcrypt==3.2.0
+passlib==1.7.4
+python-multipart==0.0.5
 
 # GraphQL API
 graphene>=2.1.3
