@@ -34,7 +34,7 @@ router = APIRouter(
 )
 
 
-@router.post("/", response_model=schemas.User)
+@router.post("", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_user(db, username=user.username)
 
@@ -44,7 +44,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return crud.create_user(db=db, user=user)
 
 
-@router.get("/", response_model=schemas.User)
+@router.get("", response_model=schemas.User)
 async def read_users_me(current_user: schemas.User = Depends(crud.user.get_current_active_user)):
     return current_user
 
@@ -67,7 +67,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@router.get("/items/")
+@router.get("/items")
 async def read_own_items(
     db: Session = Depends(get_db),
     current_user: schemas.User = Depends(crud.user.get_current_active_user)
@@ -75,7 +75,7 @@ async def read_own_items(
     return crud.item.get_itmes_by_user(db=db, owner_id=current_user.id)
 
 
-@router.post("/items/", response_model=schemas.Item)
+@router.post("/items", response_model=schemas.Item)
 def create_item_for_user(
     item: schemas.ItemCreate,
     db: Session = Depends(get_db),
