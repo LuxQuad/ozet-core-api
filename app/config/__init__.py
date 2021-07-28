@@ -1,7 +1,0 @@
-"""
-@Author:
-    Bart Kim 
-
-@Note:
-
-"""
