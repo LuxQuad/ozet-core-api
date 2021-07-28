@@ -17,6 +17,9 @@ load_dotenv(verbose=True)
 
 
 class Settings(BaseSettings):
+    SENTRY_ENABLE: bool = os.getenv('ESUME_DATABASE_URL')
+    SENTRY_DSN: str = os.getenv('ESUME_DATABASE_URL')
+
     SERVICE_NAME: str = os.getenv('SERVICE_NAME')
     SERVICE_DESC: str = os.getenv('SERVICE_DESC')
     SERVICE_VERSION: str = os.getenv('SERVICE_VERSION')

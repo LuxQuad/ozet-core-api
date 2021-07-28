@@ -7,3 +7,4 @@
 """
 
 from . import cors
+from . import sentry

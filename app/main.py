@@ -55,6 +55,9 @@ service.add_middleware(
     **middleware.cors.config
 )
 
+if settings.SENTRY_ENABLE:
+    middleware.sentry.sentry_init()
+
 '''
     Fast API Router
 '''
@@ -62,6 +65,8 @@ service.include_router(routers.users.router)
 service.include_router(routers.items.router)
 service.include_router(routers.health.router)
 
+if settings.SENTRY_ENABLE:
+    service.include_router(routers.sentry.router)
 
 '''
     Fast API GraphQL Router
