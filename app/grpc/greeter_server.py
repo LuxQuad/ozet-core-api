@@ -23,10 +23,11 @@ from protos_python import helloworld_pb2_grpc
 
 
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
-
     def SayHello(self, request, context):
         return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
 
+    def SayHelloAgain(self, request, context):
+        return helloworld_pb2.HelloReply(message='Hello again, %s!' % request.name)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
