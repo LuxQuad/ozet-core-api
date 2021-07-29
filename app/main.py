@@ -23,8 +23,6 @@ from app import routers
 '''
 esume_base.metadata.create_all(bind=esume_engine)
 
-print('DB Sync')
-
 '''
     Fast API Module Initial
 '''
@@ -61,6 +59,8 @@ service.add_middleware(
 
 if settings.SENTRY_ENABLE:
     middleware.sentry.sentry_init()
+
+middleware.process.process_init(service)
 
 '''
     Fast API Router
