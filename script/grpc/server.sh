@@ -1,3 +1,5 @@
 #!/bin/bash
 
-python app/grpc/greeter_server.py
+cd app/grpc
+
+python greeter_server.py

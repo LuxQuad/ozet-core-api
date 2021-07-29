@@ -18,16 +18,19 @@ from concurrent import futures
 import logging
 
 import grpc
-from protos_python import helloworld_pb2
-from protos_python import helloworld_pb2_grpc
+import protos_python.helloworld_pb2 as helloworld_pb2
+import protos_python.helloworld_pb2_grpc as helloworld_pb2_grpc
 
 
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
     def SayHello(self, request, context):
+        print('Meesage : %s' % request.name)
         return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
 
     def SayHelloAgain(self, request, context):
+        print('Meesage : %s' % request.name)
         return helloworld_pb2.HelloReply(message='Hello again, %s!' % request.name)
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
