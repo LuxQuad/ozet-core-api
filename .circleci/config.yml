@@ -340,17 +340,16 @@ jobs:
       - run:
           name: Install virtual environments
           command: |
-            pip install --upgrade pip
             pip install virtualenv
             virtualenv ~/workspace/venv
             
             source ~/workspace/venv/bin/activate
-
+            pip install --upgrade pip
       - run: 
           name: Install dependencies
           command: |
             source ~/workspace/venv/bin/activate
-            pip3 install -r requirements.txt
+            pip install -r requirements.txt
 
       - run:
           name: Install Environment
@@ -421,6 +420,13 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install sshpass
+
+      - run:
+          name: Install Environment
+          command: |
+            env > .env
+            cp .env prod.env
+            
       - run:
           name: Login to docker hub
           command: |
