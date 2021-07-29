@@ -8,7 +8,7 @@
 import graphene
 from starlette.graphql import GraphQLApp
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlalchemy.orm import Session
 
 from app import crud, models, schemas
@@ -25,9 +25,20 @@ router = APIRouter(
 )
 
 
-@router.get("/")
+@router.get("")
 async def health_check():
     return {"status": "live"}
+
+
+@router.get("/request")
+async def request_check(request: Request):
+
+    resposne = {
+        'host': request.client.host,
+        'headers': request.headers
+    }
+
+    return resposne
 
 
 '''
