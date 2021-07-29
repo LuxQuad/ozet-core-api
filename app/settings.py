@@ -17,6 +17,8 @@ load_dotenv(verbose=True)
 
 
 class Settings(BaseSettings):
+    PRODUCTION: bool = os.getenv('PRODUCTION')
+
     SENTRY_ENABLE: bool = os.getenv('ESUME_DATABASE_URL')
     SENTRY_DSN: str = os.getenv('ESUME_DATABASE_URL')
 
