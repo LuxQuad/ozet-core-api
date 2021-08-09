@@ -465,8 +465,10 @@ workflows:
           filters: &filters-build-with-test
             branches:
               only:
-                - dev
-                - /^(feat)[/].+/
+                - develop
+                - /^(feature)[/].+/
+                - /^(hotfix)[/].+/
+                - /^(fix)[/].+/
 
       - test:
           requires:
