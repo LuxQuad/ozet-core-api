@@ -2,7 +2,6 @@ version: 2.1
 orbs:
   python: circleci/python@1.0.0
   slack: circleci/slack@4.1
-  codecov: codecov/codecov@1.2.5
 
 executors:
   luxquad-executor:
