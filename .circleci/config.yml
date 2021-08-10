@@ -2,7 +2,6 @@ version: 2.1
 orbs:
   python: circleci/python@1.0.0
   slack: circleci/slack@4.1
-  codecov: codecov/codecov@1.2.5
 
 executors:
   luxquad-executor:
@@ -389,11 +388,11 @@ jobs:
           name: Run tests
           command: |
             source ~/workspace/venv/bin/activate
-            pytest --junitxml="~/workspace/test-results/pytest/results.xml"
-            cp ~/workspace/test-results/pytest/results.xml ~/workspace/tests-results
+            sh script/test.sh
+            cp -r ~/workspace/.pytest_results ~/workspace/.tests-results
 
       - store_test_results:
-          path: ~/workspace/tests-results
+          path: ~/workspace/.tests-results
 
       - run:
           name: Upload Codecov
@@ -501,6 +500,6 @@ workflows:
 
       - deploy:
           requires:
-            - tests
+            - test
           filters:
             <<: *filters-deploy
