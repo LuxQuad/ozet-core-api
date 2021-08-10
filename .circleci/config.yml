@@ -373,8 +373,8 @@ jobs:
             - ./*
 
       - store_artifacts:
-          name: Save artifacts - test
-          path: ~/workspace/app/test
+          name: Save artifacts - tests
+          path: ~/workspace/app/tests
           destination: tests
 
 
@@ -388,10 +388,17 @@ jobs:
           name: Run tests
           command: |
             source ~/workspace/venv/bin/activate
-            pytest --junitxml="~/workspace/test-results/pytest/results.xml"
+            sh script/test.sh
+            cp -r ~/workspace/.pytest_results ~/workspace/.tests-results
 
       - store_test_results:
-          path: ~/workspace/test-results
+          path: ~/workspace/.tests-results
+
+      - run:
+          name: Upload Codecov
+          command: |
+            source ~/workspace/venv/bin/activate
+            codecov -t $CODECOV_TOKEN
 
       - slack/notify:
           event: fail
@@ -465,8 +472,11 @@ workflows:
           filters: &filters-build-with-test
             branches:
               only:
-                - dev
-                - /^(feat)[/].+/
+                - develop
+                - /^(enhance)[/].+/
+                - /^(feature)[/].+/
+                - /^(hotfix)[/].+/
+                - /^(fix)[/].+/
 
       - test:
           requires:

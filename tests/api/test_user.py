@@ -14,8 +14,8 @@ def test_create_user(is_testcase=True):
     headers = {'Content-Type': 'application/json'}
 
     form_data = {
-        "email": "test@esume.me",
-        "username": "test",
+        "email": "tests@esume.me",
+        "username": "tests",
         "password": "testest"
     }
 
@@ -32,7 +32,7 @@ def test_create_user(is_testcase=True):
 def test_login_user(is_testcase=True):
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     form_data = {
-        "username": "test",
+        "username": "tests",
         "password": "testest"
     }
 
