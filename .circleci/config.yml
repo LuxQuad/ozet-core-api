@@ -473,7 +473,7 @@ workflows:
             branches:
               only:
                 - develop
-                - /^(enhahnce)[/].+/
+                - /^(enhance)[/].+/
                 - /^(feature)[/].+/
                 - /^(hotfix)[/].+/
                 - /^(fix)[/].+/
