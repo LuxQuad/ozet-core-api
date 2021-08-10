@@ -388,11 +388,12 @@ jobs:
           name: Run tests
           command: |
             source ~/workspace/venv/bin/activate
-            pytest --junitxml="~/workspace/test-results/pytest/results.xml"
-            cp ~/workspace/test-results/pytest/results.xml ~/workspace/tests-results
+            pip install pytest-cov
+            sh script/test.sh
+            cp ~/workspace/.test-results/junit.xml ~/workspace/test-results/pytest/results.xml
 
       - store_test_results:
-          path: ~/workspace/tests-results
+          path: ~/workspace/.tests-results
 
       - run:
           name: Upload Codecov
