@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   python: circleci/python@1.0.0
   slack: circleci/slack@4.1
+  codecov: codecov/codecov@1.2.5
 
 executors:
   luxquad-executor:
@@ -373,8 +374,8 @@ jobs:
             - ./*
 
       - store_artifacts:
-          name: Save artifacts - test
-          path: ~/workspace/app/test
+          name: Save artifacts - tests
+          path: ~/workspace/app/tests
           destination: tests
 
 
@@ -389,9 +390,16 @@ jobs:
           command: |
             source ~/workspace/venv/bin/activate
             pytest --junitxml="~/workspace/test-results/pytest/results.xml"
+            cp ~/workspace/test-results/pytest/results.xml ~/workspace/tests-results
 
       - store_test_results:
-          path: ~/workspace/test-results
+          path: ~/workspace/tests-results
+
+      - run:
+          name: Upload Codecov
+          command: |
+            source ~/workspace/venv/bin/activate
+            codecov -t $CODECOV_TOKEN
 
       - slack/notify:
           event: fail
@@ -493,6 +501,6 @@ workflows:
 
       - deploy:
           requires:
-            - test
+            - tests
           filters:
             <<: *filters-deploy
