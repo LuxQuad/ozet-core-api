@@ -398,6 +398,7 @@ jobs:
           name: Upload Codecov
           command: |
             source ~/workspace/venv/bin/activate
+            pip install codecov
             codecov -t $CODECOV_TOKEN
 
       - slack/notify:
