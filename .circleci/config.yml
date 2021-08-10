@@ -389,7 +389,7 @@ jobs:
           command: |
             source ~/workspace/venv/bin/activate
             sh script/test.sh
-            cp ~/workspace/.pytest_results ~/workspace/.tests-results
+            cp -r ~/workspace/.pytest_results ~/workspace/.tests-results
 
       - store_test_results:
           path: ~/workspace/.tests-results
