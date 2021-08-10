@@ -388,7 +388,6 @@ jobs:
           name: Run tests
           command: |
             source ~/workspace/venv/bin/activate
-            pip install pytest-cov
             sh script/test.sh
             cp ~/workspace/.test-results/junit.xml ~/workspace/test-results/pytest/results.xml
 
@@ -399,7 +398,6 @@ jobs:
           name: Upload Codecov
           command: |
             source ~/workspace/venv/bin/activate
-            pip install codecov
             codecov -t $CODECOV_TOKEN
 
       - slack/notify:
