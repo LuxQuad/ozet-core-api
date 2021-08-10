@@ -500,6 +500,6 @@ workflows:
 
       - deploy:
           requires:
-            - tests
+            - test
           filters:
             <<: *filters-deploy
