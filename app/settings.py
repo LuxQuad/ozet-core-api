@@ -13,8 +13,11 @@ from pydantic import BaseSettings
 '''
     Load Environments
 '''
-load_dotenv(verbose=True)
-
+load_dotenv(
+    dotenv_path='.misc/env/test.env',
+    verbose=True,
+    override=True,
+)
 
 class Settings(BaseSettings):
     PRODUCTION: bool = os.getenv('PRODUCTION')
