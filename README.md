@@ -7,6 +7,7 @@
       <a href="https://codecov.io/gh/LuxQuad/esume-core-api">
         <img src="https://codecov.io/gh/LuxQuad/esume-core-api/branch/develop/graph/badge.svg?token=XNFZWYXC91" alt="codecov" />
       </a>
+      <a href="#" target="_blank"><img src="https://img.shields.io/github/issues-pr-closed/LuxQuad/esume-core-api" alt="GitHub closed pull requests" /></a>
   </div>
   <div id="project-logo">
     <a href="https://github.com/BartKim-J/pretty-readme" >
