@@ -355,6 +355,7 @@ jobs:
       - run:
           name: Install Environment
           command: |
+            touch .misc/env/prod.env
             env > .misc/env/prod.env
 
       - slack/notify:
