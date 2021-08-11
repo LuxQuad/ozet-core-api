@@ -8,7 +8,10 @@ RUN    pip install -r requirements.txt
 
 # Install Project
 ADD    ./app              /service/app
+ADD    ./docker           /service/docker
+ADD    ./nginx            /service/nginx
 ADD    ./tests            /service/tests
+ADD    ./.github          /service/.github
 ADD    ./.misc            /service/.misc
 ADD    ./pytest.ini       /service/pytest.ini
 
