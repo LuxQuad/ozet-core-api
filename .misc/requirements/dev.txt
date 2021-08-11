@@ -101,6 +101,7 @@ pycparser==2.20
     # via cffi
 pydantic==1.8.2
     # via
+    #   -r .misc/requirements/base.in
     #   fastapi
     #   fastapi-pagination
 pyparsing==2.4.7
@@ -109,14 +110,11 @@ pytest==6.2.4
     # via
     #   -r .misc/requirements/test.in
     #   pytest-cov
-    #   pytest-django
     #   pytest-factoryboy
     #   pytest-forked
     #   pytest-mock
     #   pytest-xdist
 pytest-cov==2.12.1
-    # via -r .misc/requirements/test.in
-pytest-django==3.9.0
     # via -r .misc/requirements/test.in
 pytest-factoryboy==2.0.3
     # via -r .misc/requirements/test.in

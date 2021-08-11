@@ -75,6 +75,7 @@ pycparser==2.20
     # via cffi
 pydantic==1.8.2
     # via
+    #   -r .misc/requirements/base.in
     #   fastapi
     #   fastapi-pagination
 python-dotenv==0.18.0
