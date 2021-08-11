@@ -12,7 +12,9 @@ ADD    ./.misc            /service/.misc
 ADD    ./pytest.ini       /service/pytest.ini
 
 # Install Package
-RUN    pip install -r .misc/requirements/prod.txt
+RUN    pip install --upgrade pip-tools
+RUN    sh .misc/script/build_requirements.sh
+RUN    pip-sync .misc/requirements/test.txt
 
 EXPOSE 8000
 
