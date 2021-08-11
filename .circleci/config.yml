@@ -355,8 +355,7 @@ jobs:
       - run:
           name: Install Environment
           command: |
-            env > .misc/env/.env
-            cp .misc/env/.env .misc/env/prod.env
+            env > .misc/env/prod.env
 
       - slack/notify:
           event: fail

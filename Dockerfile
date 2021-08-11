@@ -2,10 +2,6 @@ FROM python:3.7
 
 WORKDIR /service
 
-# Install Package
-ADD    ./requirements.txt   /service/
-RUN    pip install -r requirements.txt
-
 # Install Project
 ADD    ./app              /service/app
 ADD    ./docker           /service/docker
@@ -14,6 +10,9 @@ ADD    ./tests            /service/tests
 ADD    ./.github          /service/.github
 ADD    ./.misc            /service/.misc
 ADD    ./pytest.ini       /service/pytest.ini
+
+# Install Package
+RUN    pip install -r .misc/requirements/prod.txt
 
 EXPOSE 8000
 
