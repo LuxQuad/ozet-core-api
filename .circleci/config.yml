@@ -345,18 +345,19 @@ jobs:
             
             source ~/workspace/venv/bin/activate
             pip install --upgrade pip
+            pip install --upgrade pip-tools
       - run: 
           name: Install dependencies
           command: |
             source ~/workspace/venv/bin/activate
-            pip install -r requirements.txt
+            pip-sync .misc/requirements/test.txt
 
       - run:
           name: Install Environment
           command: |
-            env > .env
-            cp .env prod.env
-           
+            env > .misc/env/.env
+            cp .misc/env/.env .misc/env/prod.env
+
       - slack/notify:
           event: fail
           mentions: '@EngineeringTeam'
@@ -388,7 +389,7 @@ jobs:
           name: Run tests
           command: |
             source ~/workspace/venv/bin/activate
-            sh script/test.sh
+            sh .misc/script/test.sh
             cp -r ~/workspace/.pytest_results ~/workspace/.tests-results
 
       - store_test_results:
