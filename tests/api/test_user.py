@@ -14,9 +14,9 @@ def test_create_user(is_testcase=True):
     headers = {'Content-Type': 'application/json'}
 
     form_data = {
-        "email": "tests@esume.me",
-        "username": "tests",
-        "password": "testest"
+        "email": "ozet@ozet.me",
+        "username": "ozet",
+        "password": "ozetozet"
     }
 
     response = client.post("/users", data=json.dumps(form_data), headers=headers)
