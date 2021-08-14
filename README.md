@@ -29,7 +29,7 @@
 
 ## Getting Started
 
-아래는 `Esume Core API` 를 실행하기 위한 가이드 입니다.
+아래는 `OZET Core API` 를 실행하기 위한 가이드 입니다.
 
 ### Prerequisites
 
