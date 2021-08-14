@@ -1,12 +1,13 @@
 <div id="header" align="center">
-  <h1>Esume Core API</h1>
+  <h1>OZET Core API</h1>
   <div id="ci-cd">
-      <a href="https://circleci.com/gh/EineBlume/chatie-server/tree/master">
-        <img src="https://circleci.com/gh/LuxQuad/esume-core-api/tree/develop.svg?style=shield&circle-token=36c9a40ddbf32c1d59030908ef15af6f6c1a05d5" alt="circleci"/>
+      <a href="https://circleci.com/gh/LuxQuad/ozet-core-api/tree/develop">
+        <img src="https://circleci.com/gh/LuxQuad/ozet-core-api/tree/develop.svg?style=shield&circle-token=36c9a40ddbf32c1d59030908ef15af6f6c1a05d5" alt="circleci"/>
       </a>
-      <a href="https://codecov.io/gh/LuxQuad/esume-core-api">
-        <img src="https://codecov.io/gh/LuxQuad/esume-core-api/branch/develop/graph/badge.svg?token=XNFZWYXC91" alt="codecov" />
+      <a href="https://codecov.io/gh/LuxQuad/ozet-core-api">
+        <img src="https://codecov.io/gh/LuxQuad/ozet-core-api/branch/develop/graph/badge.svg?token=XNFZWYXC91" alt="codecov" />
       </a>
+      <a href="#" target="_blank"><img src="https://img.shields.io/github/issues-pr-closed/LuxQuad/ozet-core-api" alt="GitHub closed pull requests" /></a>
   </div>
   <div id="project-logo">
     <a href="https://github.com/BartKim-J/pretty-readme" >
