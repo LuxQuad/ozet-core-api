@@ -389,7 +389,7 @@ jobs:
           name: Run tests
           command: |
             source ~/workspace/venv/bin/activate
-            sh .misc/script/test.sh
+            sh .misc/scripts/run_tests.sh
             cp -r ~/workspace/.pytest_results ~/workspace/.tests-results
 
       - store_test_results:
