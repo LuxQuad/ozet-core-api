@@ -1,5 +1,5 @@
 <div id="header" align="center">
-  <h1>Esume Core API</h1>
+  <h1>OZET Core API</h1>
   <div id="ci-cd">
       <a href="https://circleci.com/gh/LuxQuad/ozet-core-api/tree/develop">
         <img src="https://circleci.com/gh/LuxQuad/ozet-core-api/tree/develop.svg?style=shield&circle-token=36c9a40ddbf32c1d59030908ef15af6f6c1a05d5" alt="circleci"/>
