@@ -6,8 +6,8 @@ orbs:
 executors:
   luxquad-executor:
     environment:
-      IMAGE_NAME: bartkim07120/esume-core-api
-      PLATFORM: Esume Core API
+      IMAGE_NAME: bartkim07120/ozet-core-api
+      PLATFORM: OZET Core API
       slack_build_start: |
         {
           "blocks": [

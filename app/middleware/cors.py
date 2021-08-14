@@ -16,6 +16,8 @@ if settings.PRODUCTION:
     ALLOW_HOST: list = [
         "https://esume.me",
         "https://api.esume.me",
+        "https://ozet.me",
+        "https://api.ozet.me",
     ]
 else:
     ALLOW_HOST: list = [

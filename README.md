@@ -25,7 +25,7 @@
   </div>
 </div>
 
-> :warning: esume logo 나오면 이미지 교체 예정
+> :warning: ozet logo 나오면 이미지 교체 예정
 
 ## Getting Started
 
