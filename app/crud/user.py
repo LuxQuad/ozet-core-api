@@ -84,7 +84,7 @@ async def get_current_active_user(current_user: schemas.User = Depends(get_curre
 
 
 def get_user(db: Session, username: str):
-    return db.query(models.User).filter(username == username).first()
+    return db.query(models.User).filter(models.User.username == username).first()
 
 
 def create_user(db: Session, user: schemas.UserCreate):
