@@ -569,6 +569,8 @@ workflows:
               only:
                 - master
                 - /^(circleci)[/].+/
+          deploy_target: "프로덕션 서비스"
+          deploy_target_img: "https://user-images.githubusercontent.com/36470472/132519669-d663ee6b-5c9a-4e7f-81c3-380bc9bd430c.png"
 
       - test:
           requires:
