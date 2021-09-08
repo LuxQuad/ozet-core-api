@@ -321,13 +321,87 @@ executors:
           password: $DOCKERHUB_PASSWORD
     working_directory: ~/workspace
 
+commands:
+  slack_chatie_notify:
+    description: ""
+    parameters:
+      header:
+        type: string
+      img_url:
+        type: string
+      event:
+        description: |
+          In what event should this message send? Options: ["fail", "pass", "always"]
+        type: enum
+        enum: ["fail", "pass", "always"]
+        default: "always"
+    steps:
+      - slack/notify:
+          event: << parameters.event >>
+          custom: >
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "<< parameters.header >>",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "$(date +'%Y/%m/%d @%T')"
+                  },
+                  "accessory": {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "CircleCI", "emoji": true
+                    },
+                    "value": "circle_ci_url",
+                    "url": "${CIRCLE_BUILD_URL}",
+                    "action_id": "button-action"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                      "type": "mrkdwn",
+                      "text": "> *작업 브랜치* - `$CIRCLE_PROJECT_REPONAME/$CIRCLE_BRANCH`\n> *작업자* - `$CIRCLE_USERNAME`\n> *개발팀* - <!subteam^S023Z4GR59P>"
+                  },
+                  "accessory": {
+                    "type": "image",
+                    "image_url": "<< parameters.img_url >>",
+                    "alt_text": "status-image"
+                  }
+                },
+                {
+                  "type": "divider"
+                }
+              ]
+            }
+
 jobs:
   build:
     executor: luxquad-executor
+    parameters:
+      deploy_target:
+        description: Deploy target name
+        type: string
+      deploy_target_img:
+        description: Deploy target name
+        type: string
     steps:
-      - slack/notify:
-          event: always
-          template: slack_build_start
+      - slack_chatie_notify:
+          header: "${SLACK_APP_PLATFORM}를 '<< parameters.deploy_target >>'에 성공적으로 배포했습니다 :tada:"
+          img_url: "<< parameters.deploy_target_img >>"
+          event: pass
 
       - checkout
             
@@ -478,6 +552,8 @@ workflows:
                 - /^(feature)[/].+/
                 - /^(hotfix)[/].+/
                 - /^(fix)[/].+/
+          deploy_target: "프로덕션 서비스"
+          deploy_target_img: "https://user-images.githubusercontent.com/36470472/132519669-d663ee6b-5c9a-4e7f-81c3-380bc9bd430c.png"
 
       - test:
           requires:
